@@ -11,23 +11,10 @@ const schema = defineSchema({
   },
   collections: [
     {
-      label: "Page Content",
-      name: "page",
-      path: "content/page",
-      format: "mdx",
-      fields: [
-        {
-          name: "body",
-          label: "Main Content",
-          type: "rich-text",
-          isBody: true,
-        },
-      ],
-    },
-    {
       label: "Blog Posts",
       name: "post",
       path: "content/post",
+      format: "mdx",
       fields: [
         {
           type: "string",
@@ -35,13 +22,15 @@ const schema = defineSchema({
           name: "title",
         },
         {
-          type: "string",
+          type: "image",
+          name: "img",
+          label: "Image"
+        },
+        {
+          type: "rich-text",
           label: "Blog Post Body",
           name: "body",
           isBody: true,
-          ui: {
-            component: "textarea",
-          },
         },
       ],
     },

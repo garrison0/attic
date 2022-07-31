@@ -1,14 +1,28 @@
 import { staticRequest } from "tinacms";
 import { Layout } from "../../components/Layout";
+import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import { useTina } from "tinacms/dist/edit-state";
+import styled from 'styled-components'
 
 const query = `query getPost($relativePath: String!) {
   post(relativePath: $relativePath) {
     title
     body
+    img
   }
 }
 `;
+
+const Image = styled.img`
+  max-width: 450px;
+  @media (max-width: 500px) {
+    max-width: 100%;
+  }
+`
+
+const ImageContainer = styled.div`
+  text-align: center;
+`
 
 export default function Home(props) {
   // data passes though in production mode and data is updated to the sidebar data in edit-mode
@@ -20,15 +34,13 @@ export default function Home(props) {
 
   return (
     <Layout>
-      <code>
-        <pre
-          style={{
-            backgroundColor: "lightgray",
-          }}
-        >
-          {JSON.stringify(data.post, null, 2)}
-        </pre>
-      </code>
+      <h2 style={{marginTop: 0}}>
+        {data.post.title}
+      </h2>
+      <ImageContainer>
+        <Image src={data.post.img} />
+      </ImageContainer>
+      <TinaMarkdown content={data.post.body} />
     </Layout>
   );
 }
@@ -60,7 +72,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (ctx) => {
   const variables = {
-    relativePath: ctx.params.slug + ".md",
+    relativePath: ctx.params.slug + ".mdx",
   };
   let data = {};
   try {

@@ -1,0 +1,14 @@
+body {
+  font-family: 'Halant', serif;
+  padding: 20px 20px!important;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+  font-family: 'Noto Sans', sans-serif;
+}
+
+main { 
+  padding: 1rem 0;
+}

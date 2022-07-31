@@ -73,8 +73,6 @@ export type Query = {
   collections: Array<Collection>;
   node: Node;
   document: DocumentNode;
-  page: Page;
-  pageConnection: PageConnection;
   post: Post;
   postConnection: PostConnection;
 };
@@ -98,20 +96,6 @@ export type QueryNodeArgs = {
 export type QueryDocumentArgs = {
   collection?: InputMaybe<Scalars['String']>;
   relativePath?: InputMaybe<Scalars['String']>;
-};
-
-
-export type QueryPageArgs = {
-  relativePath?: InputMaybe<Scalars['String']>;
-};
-
-
-export type QueryPageConnectionArgs = {
-  before?: InputMaybe<Scalars['String']>;
-  after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Float']>;
-  last?: InputMaybe<Scalars['Float']>;
-  sort?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -163,33 +147,13 @@ export type CollectionDocumentsArgs = {
   sort?: InputMaybe<Scalars['String']>;
 };
 
-export type DocumentNode = Page | Post;
-
-export type Page = Node & Document & {
-  __typename?: 'Page';
-  body?: Maybe<Scalars['JSON']>;
-  id: Scalars['ID'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON'];
-};
-
-export type PageConnectionEdges = {
-  __typename?: 'PageConnectionEdges';
-  cursor: Scalars['String'];
-  node?: Maybe<Page>;
-};
-
-export type PageConnection = Connection & {
-  __typename?: 'PageConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float'];
-  edges?: Maybe<Array<Maybe<PageConnectionEdges>>>;
-};
+export type DocumentNode = Post;
 
 export type Post = Node & Document & {
   __typename?: 'Post';
   title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
+  img?: Maybe<Scalars['String']>;
+  body?: Maybe<Scalars['JSON']>;
   id: Scalars['ID'];
   _sys: SystemInfo;
   _values: Scalars['JSON'];
@@ -214,8 +178,6 @@ export type Mutation = {
   updateDocument: DocumentNode;
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
-  updatePage: Page;
-  createPage: Page;
   updatePost: Post;
   createPost: Post;
 };
@@ -248,18 +210,6 @@ export type MutationCreateDocumentArgs = {
 };
 
 
-export type MutationUpdatePageArgs = {
-  relativePath: Scalars['String'];
-  params: PageMutation;
-};
-
-
-export type MutationCreatePageArgs = {
-  relativePath: Scalars['String'];
-  params: PageMutation;
-};
-
-
 export type MutationUpdatePostArgs = {
   relativePath: Scalars['String'];
   params: PostMutation;
@@ -272,47 +222,23 @@ export type MutationCreatePostArgs = {
 };
 
 export type DocumentMutation = {
-  page?: InputMaybe<PageMutation>;
   post?: InputMaybe<PostMutation>;
-};
-
-export type PageMutation = {
-  body?: InputMaybe<Scalars['JSON']>;
 };
 
 export type PostMutation = {
   title?: InputMaybe<Scalars['String']>;
-  body?: InputMaybe<Scalars['String']>;
+  img?: InputMaybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['JSON']>;
 };
 
-export type PagePartsFragment = { __typename?: 'Page', body?: any | null | undefined };
-
-export type PostPartsFragment = { __typename?: 'Post', title?: string | null | undefined, body?: string | null | undefined };
-
-export type PageQueryVariables = Exact<{
-  relativePath: Scalars['String'];
-}>;
-
-
-export type PageQuery = { __typename?: 'Query', page: { __typename?: 'Page', id: string, body?: any | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type PageConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']>;
-  after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Float']>;
-  last?: InputMaybe<Scalars['Float']>;
-  sort?: InputMaybe<Scalars['String']>;
-}>;
-
-
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, edges?: Array<{ __typename?: 'PageConnectionEdges', node?: { __typename?: 'Page', id: string, body?: any | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null | undefined } | null | undefined> | null | undefined } };
+export type PostPartsFragment = { __typename?: 'Post', title?: string | null | undefined, img?: string | null | undefined, body?: any | null | undefined };
 
 export type PostQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, title?: string | null | undefined, body?: string | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PostQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, title?: string | null | undefined, img?: string | null | undefined, body?: any | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type PostConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']>;
@@ -323,66 +249,15 @@ export type PostConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, edges?: Array<{ __typename?: 'PostConnectionEdges', node?: { __typename?: 'Post', id: string, title?: string | null | undefined, body?: string | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null | undefined } | null | undefined> | null | undefined } };
+export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, edges?: Array<{ __typename?: 'PostConnectionEdges', node?: { __typename?: 'Post', id: string, title?: string | null | undefined, img?: string | null | undefined, body?: any | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null | undefined } | null | undefined> | null | undefined } };
 
-export const PagePartsFragmentDoc = gql`
-    fragment PageParts on Page {
-  body
-}
-    `;
 export const PostPartsFragmentDoc = gql`
     fragment PostParts on Post {
   title
+  img
   body
 }
     `;
-export const PageDocument = gql`
-    query page($relativePath: String!) {
-  page(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...PageParts
-  }
-}
-    ${PagePartsFragmentDoc}`;
-export const PageConnectionDocument = gql`
-    query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
-  pageConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-  ) {
-    totalCount
-    edges {
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...PageParts
-      }
-    }
-  }
-}
-    ${PagePartsFragmentDoc}`;
 export const PostDocument = gql`
     query post($relativePath: String!) {
   post(relativePath: $relativePath) {
@@ -433,13 +308,7 @@ export const PostConnectionDocument = gql`
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      page(variables: PageQueryVariables, options?: C): Promise<{data: PageQuery, variables: PageQueryVariables, query: string}> {
-        return requester<{data: PageQuery, variables: PageQueryVariables, query: string}, PageQueryVariables>(PageDocument, variables, options);
-      },
-    pageConnection(variables?: PageConnectionQueryVariables, options?: C): Promise<{data: PageConnectionQuery, variables: PageConnectionQueryVariables, query: string}> {
-        return requester<{data: PageConnectionQuery, variables: PageConnectionQueryVariables, query: string}, PageConnectionQueryVariables>(PageConnectionDocument, variables, options);
-      },
-    post(variables: PostQueryVariables, options?: C): Promise<{data: PostQuery, variables: PostQueryVariables, query: string}> {
+      post(variables: PostQueryVariables, options?: C): Promise<{data: PostQuery, variables: PostQueryVariables, query: string}> {
         return requester<{data: PostQuery, variables: PostQueryVariables, query: string}, PostQueryVariables>(PostDocument, variables, options);
       },
     postConnection(variables?: PostConnectionQueryVariables, options?: C): Promise<{data: PostConnectionQuery, variables: PostConnectionQueryVariables, query: string}> {
