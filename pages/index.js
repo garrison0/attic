@@ -30,6 +30,11 @@ const CardImage = styled.img`
 `
 
 const CardTitle = styled.h4`
+  font-style: italic;
+  margin: 0;
+`
+
+const CardText = styled.h4`
   margin: 0;
 `
 
@@ -43,6 +48,8 @@ export default function Home(props) {
             <Card key={post.slug}>
               <CardImage src={post.frontmatter.img} />
               <CardTitle>{post.frontmatter.title ? post.frontmatter.title : post.slug}</CardTitle>
+              <CardText>by</CardText>
+              <CardText>{post.frontmatter.author ? post.frontmatter.author : 'Anonymous'}</CardText>
             </Card>
           </Link>
         ))}
