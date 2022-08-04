@@ -19,7 +19,7 @@ const Card = styled.div`
   text-align: center;
   box-shadow: 0px 2px 2px #8F8F8F4F;
   transition: all 200ms;
-  &:hover { 
+  &:hover {
     transform: translateY(-2px);
     cursor: pointer;
   }
@@ -27,6 +27,7 @@ const Card = styled.div`
 
 const CardImage = styled.img`
   max-width: 280px;
+  max-height: 280px;
 `
 
 const CardTitle = styled.h4`
