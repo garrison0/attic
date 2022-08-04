@@ -26,8 +26,8 @@ const Card = styled.div`
 `
 
 const CardImage = styled.img`
-  max-width: 280px;
-  max-height: 280px;
+  max-width: 240px;
+  max-height: 240px;
 `
 
 const CardTitle = styled.h4`
