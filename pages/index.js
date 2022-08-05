@@ -34,7 +34,8 @@ const CardTitle = styled.h4`
   margin: 0;
 `
 
-const CardText = styled.h4`
+const CardAuthor = styled.h4`
+  white-space: pre-line;
   margin: 0;
 `
 
@@ -44,12 +45,11 @@ export default function Home(props) {
     <Layout>
       <CardContainer>
         {data.map((post) => (
-          <Link href={`/posts/${post.slug}`}>
-            <Card key={post.slug}>
+          <Link key={post.slug} href={`/posts/${post.slug}`}>
+            <Card>
               <CardImage src={post.frontmatter.img} />
               <CardTitle>{post.frontmatter.title ? post.frontmatter.title : post.slug}</CardTitle>
-              <CardText>by</CardText>
-              <CardText>{post.frontmatter.author ? post.frontmatter.author : 'Anonymous'}</CardText>
+              <CardAuthor>{"by\n" + (post.frontmatter.author ? post.frontmatter.author : 'Anonymous')}</CardAuthor>
             </Card>
           </Link>
         ))}
