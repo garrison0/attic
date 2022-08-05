@@ -8,6 +8,7 @@ const CardContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
 `
 
 const Card = styled.div`
@@ -37,12 +38,12 @@ const CardImage = styled.img`
 const CardTitle = styled.h4`
   font-style: italic;
   margin: 0;
+  margin-top: 1rem;
 `
 
 const CardAuthor = styled.h4`
   white-space: pre-line;
   margin: 0;
-  margin-top: 1rem;
 `
 
 export default function Home(props) {
