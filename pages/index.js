@@ -35,6 +35,12 @@ const CardImage = styled.img`
 `
 
 const CardTitle = styled.h4`
+  font-style: italic;
+  margin: 0;
+`
+
+const CardAuthor = styled.h4`
+  white-space: pre-line;
   margin: 0;
   margin-top: 1rem;
 `
@@ -45,10 +51,11 @@ export default function Home(props) {
     <Layout>
       <CardContainer>
         {data.map((post) => (
-          <Link href={`/posts/${post.slug}`}>
-            <Card key={post.slug}>
+          <Link key={post.slug} href={`/posts/${post.slug}`}>
+            <Card>
               <CardImage src={post.frontmatter.img} />
               <CardTitle>{post.frontmatter.title ? post.frontmatter.title : post.slug}</CardTitle>
+              <CardAuthor>{"by\n" + (post.frontmatter.author ? post.frontmatter.author : 'Anonymous')}</CardAuthor>
             </Card>
           </Link>
         ))}
