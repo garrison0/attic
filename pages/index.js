@@ -15,22 +15,28 @@ const Card = styled.div`
   max-width: 300px;
   border: 1px solid #8F8F8F;
   border-radius: 2px;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
   box-shadow: 0px 2px 2px #8F8F8F4F;
   transition: all 200ms;
-  &:hover { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &:hover {
     transform: translateY(-2px);
     cursor: pointer;
   }
 `
 
 const CardImage = styled.img`
-  max-width: 280px;
+  max-width: 240px;
+  max-height: 240px;
 `
 
 const CardTitle = styled.h4`
   margin: 0;
+  margin-top: 1rem;
 `
 
 export default function Home(props) {
