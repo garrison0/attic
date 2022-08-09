@@ -1577,13 +1577,6 @@
   dependencies:
     isomorphic-fetch "^3.0.0"
 
-"@tinacms/schema-tools@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@tinacms/schema-tools/-/schema-tools-0.0.7.tgz#bcefbebc8f58ba6f5975b0a3db43443241bf8563"
-  integrity sha512-RhWpBxNlPN5bp+icwnb7YtarYAG5w0d3mNVzrGTt2PcXmnPZ3+CcdGEqp0kDWpGevRUNMeCV1XlvEjWklB1Xcg==
-  dependencies:
-    zod "^3.14.3"
-
 "@tinacms/schema-tools@0.0.9":
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/@tinacms/schema-tools/-/schema-tools-0.0.9.tgz#30fd8b48e98e182cde6c1402d5094ffefd408c76"
@@ -9698,9 +9691,9 @@ zen-observable@0.8.15, zen-observable@^0.8.0:
   integrity sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
 
 zod@^3.14.3:
-  version "3.14.4"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.14.4.tgz#e678fe9e5469f4663165a5c35c8f3dc66334a5d6"
-  integrity sha512-U9BFLb2GO34Sfo9IUYp0w3wJLlmcyGoMd75qU9yf+DrdGA4kEx6e+l9KOkAlyUO0PSQzZCa3TR4qVlcmwqSDuw==
+  version "3.17.10"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.17.10.tgz#8716a05e6869df6faaa878a44ffe3c79e615defb"
+  integrity sha512-IHXnQYQuOOOL/XgHhgl8YjNxBHi3xX0mVcHmqsvJgcxKkEczPshoWdxqyFwsARpf41E0v9U95WUROqsHHxt0UQ==
 
 zustand@3.6.7:
   version "3.6.7"
