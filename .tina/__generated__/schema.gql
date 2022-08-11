@@ -80,6 +80,7 @@ union DocumentNode = Post
 type Post implements Node & Document {
   title: String
   img: String
+  date: String
   body: JSON
   id: ID!
   _sys: SystemInfo!
@@ -113,6 +114,7 @@ input DocumentMutation {
 input PostMutation {
   title: String
   img: String
+  date: String
   body: JSON
 }
 

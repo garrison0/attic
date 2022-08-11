@@ -47,7 +47,9 @@ const CardAuthor = styled.h4`
 `
 
 export default function Home(props) {
-  const data = props.allBlogs;
+  const data = props.allBlogs.sort( (a,b) => {
+    return new Date(b.frontmatter.date) - new Date(a.frontmatter.date);
+  });
   return (
     <Layout>
       <CardContainer>

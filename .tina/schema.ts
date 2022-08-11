@@ -23,8 +23,16 @@ const schema = defineSchema({
         },
         {
           type: "image",
+          label: "Image",
           name: "img",
-          label: "Image"
+        },
+        {
+          type: "datetime",
+          label: "Date",
+          name: "date",
+          ui: {
+            dateFormat: 'DD MMMM YYYY'
+          }
         },
         {
           type: "rich-text",
