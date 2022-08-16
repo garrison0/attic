@@ -1,12 +1,7 @@
 import { defineConfig, defineSchema } from "tinacms";
 
-const branch = process.env.NEXT_PUBLIC_EDIT_BRANCH || "main";
-
 const schema = defineSchema({
   config: {
-    clientId: '882007dc-cb24-465a-8fd3-2a9a3bb0e75e',
-    token: 'ca5f7e7ed8ca7c3aa6548a2f37e43e276e5c168f',
-    branch,
     media: {
       tina: {
         mediaRoot: "uploads",
@@ -52,6 +47,7 @@ const schema = defineSchema({
 
 export default schema;
 
+const branch = process.env.NEXT_PUBLIC_EDIT_BRANCH || "main";
 const apiURL =
   process.env.NODE_ENV == "development"
     ? "http://localhost:4001/graphql"
