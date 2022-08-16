@@ -2,6 +2,8 @@ import { defineConfig, defineSchema } from "tinacms";
 
 const schema = defineSchema({
   config: {
+    clientId: '882007dc-cb24-465a-8fd3-2a9a3bb0e75e',
+    token: 'ca5f7e7ed8ca7c3aa6548a2f37e43e276e5c168f',
     media: {
       tina: {
         mediaRoot: "uploads",
