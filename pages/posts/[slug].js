@@ -48,7 +48,7 @@ export default function Home(props) {
 export const getStaticPaths = async () => {
   const postsResponse = await staticRequest({
     query: `{
-        postConnection {
+        postConnection(first: 30) {
           edges {
             node {
               _sys {
