@@ -1,3 +1,4 @@
+import { staticRequest } from "tinacms";
 import { defineConfig, defineSchema } from "tinacms";
 
 const schema = defineSchema({
@@ -27,12 +28,31 @@ const schema = defineSchema({
           name: "img",
         },
         {
+          type: "string",
+          label: "Author",
+          name: "author",
+        },
+        {
           type: "datetime",
           label: "Date",
           name: "date",
           ui: {
             dateFormat: 'DD MMMM YYYY'
           }
+        },
+        {
+          type: "object",
+          list: true,
+          label: "Related Posts",
+          name: "relatedPosts",
+          fields: [
+            {
+              type: "reference",
+              label: "Related Post",
+              name: "relatedPost",
+              collections: ["post"],
+            },
+          ],
         },
         {
           type: "rich-text",
