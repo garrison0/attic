@@ -20,7 +20,7 @@ for (const filename of postPaths) {
     k += 1;
 }
 
-const cy = cytoscape();
+const cy = cytoscape({container: document.getElementById('cy')});
 
 // let i = 0;
 for (const [path, file] of Object.entries(posts)) {
@@ -120,6 +120,9 @@ const layout_2 = cy.makeLayout({
         y2: 100,
     },
 });
+
+layout_1.run()
+
 // (async () => {
 //     await layout.run();
 // })()
