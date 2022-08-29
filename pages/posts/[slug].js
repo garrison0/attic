@@ -34,6 +34,7 @@ export default function Home(props) {
 
   return (
     <Layout>
+      <iframe src="/twist/index.html" width="100%" height="500px" style={{border: "none"}}/>
       <h2 style={{marginTop: 0}}>
         {data.post.title}
       </h2>
