@@ -39,7 +39,7 @@ for (const [path, file] of Object.entries(posts)) {
             }
         }
 
-        // ensure related post only points in one direction
+        // ensure related post only points in one direction (i.e. if A -> B exists, don't create B -> A)
         const relatedPostFile = posts[relatedPostPath];
         if (relatedPostFile.data.relatedPosts) {
             for (const p of relatedPostFile.data.relatedPosts) {
