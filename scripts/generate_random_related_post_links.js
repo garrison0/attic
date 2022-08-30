@@ -2,7 +2,7 @@ const matter = require('gray-matter');
 const fs = require('fs');
 const crypto = require('crypto');
 
-const SAVE_UPDATED_FILES = false;
+const SAVE_UPDATED_FILES = true;
 
 const basedir = 'content/post';
 const postPaths = fs.readdirSync(basedir);

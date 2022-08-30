@@ -20,7 +20,7 @@ for (const filename of postPaths) {
     k += 1;
 }
 
-const cy = cytoscape({container: document.getElementById('cy')});
+const cy = cytoscape();
 
 // let i = 0;
 for (const [path, file] of Object.entries(posts)) {
@@ -132,8 +132,29 @@ Promise.resolve()
     .then(() => run(layout_1))
     .then(() => { console.log("done") })
     .then(() => {
-        for (const c of cy.nodes()) {
-            console.log(`${c._private.data.id}: ${JSON.stringify(c._private.position)}`);
+        const elements = [];
+        for (const n of cy.nodes()) {
+            const node = {
+                data: {
+                    id:    n._private.data.id,
+                    label: n._private.data.id,
+                },
+                position: n._private.position
+            };
+            elements.push(node);
+            console.log(`node: ${JSON.stringify(node)}`);
         }
-    });
 
+        for (const e of cy.edges()) {
+            const edge = {
+                data: {
+                    source: e._private.data.source,
+                    target: e._private.data.target,
+                },
+            };
+            elements.push(edge);
+            console.log(`edge: ${JSON.stringify(edge)}`);
+        }
+
+        fs.writeFileSync("graph.json", JSON.stringify(elements));
+    });
