@@ -139,7 +139,10 @@ Promise.resolve()
                     id:    n._private.data.id,
                     label: n._private.data.id,
                 },
-                position: n._private.position
+                position: {
+                    ...n._private.position,
+                    z: Math.floor(Math.random() * 10) + 1,
+                },
             };
             elements.push(node);
             console.log(`node: ${JSON.stringify(node)}`);
