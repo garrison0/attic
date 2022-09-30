@@ -1,0 +1,25 @@
+name: Deploy (?)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  generate-graph:
+    runs-on: ubuntu-latest
+    container:
+      image: node:16-alpine
+    steps:
+      - uses: actions/checkout@v1
+      - name: install dependencies
+        run: yarn install
+
+      - name: run generate_graph.js
+        run: yarn node scripts/generate_graph.js
+
+      - name: add updated graph.json to repo
+        run: |
+          git add graph.json
+          git commit -am '[YOUR FRIENDLY CI BOT I LUV U]: generating new graph.json'
+          git push origin main
