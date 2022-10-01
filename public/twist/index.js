@@ -1,4 +1,4 @@
-import * as twgl from '../../node_modules/twgl.js/dist/4.x/twgl-full.module.js';
+import * as twgl from '/../../node_modules/twgl.js/dist/4.x/twgl-full.module.js';
 
 const gl = document.querySelector("#c").getContext("webgl2");
 var state = {sliderValue: 0.0};

@@ -1,8 +1,16 @@
+import dynamic from "next/dynamic";
 import { staticRequest } from "tinacms";
 import { Layout } from "../../components/Layout";
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import { useTina } from "tinacms/dist/edit-state";
 import styled from 'styled-components'
+
+const CytoscapeContainer = dynamic(
+  () => {
+      return import("../../components/Cytoscape");
+  },
+  { ssr: false }
+);
 
 const query = `query getPost($relativePath: String!) {
   post(relativePath: $relativePath) {
@@ -34,7 +42,7 @@ export default function Home(props) {
 
   return (
     <Layout>
-      <iframe src="/twist/index.html" width="100%" height="500px" style={{border: "none"}}/>
+      <CytoscapeContainer />
       <h2 style={{marginTop: 0}}>
         {data.post.title}
       </h2>

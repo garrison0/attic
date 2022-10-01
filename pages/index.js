@@ -1,15 +1,7 @@
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Layout } from "../components/Layout";
 import styled from 'styled-components'
 import matter from 'gray-matter'
-
-const CytoscapeContainer = dynamic(
-    () => {
-        return import("../components/Cytoscape");
-    },
-    { ssr: false }
-);
 
 const CardContainer = styled.div`
   display: flex;
@@ -54,17 +46,11 @@ const CardAuthor = styled.h4`
   margin: 0;
 `
 
-export default function CytoscapeTest(props) {
-  return <CytoscapeContainer />;
-}
-
-// export default function Home(props) {
-function Home(props) {
+export default function Home(props) {
   const data = props.allBlogs.sort( (a,b) => {
     return new Date(b.frontmatter.date) - new Date(a.frontmatter.date);
   });
 
-  return <CytoscapeContainer />;
   return (
     <Layout>
       <CardContainer>
