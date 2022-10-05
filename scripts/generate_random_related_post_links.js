@@ -23,7 +23,7 @@ for (const [path, file] of Object.entries(posts)) {
 
     file.data.relatedPosts = [];
 
-    let numRelatedPostsAdded = 0;
+    let numRelatedPostsAdded = crypto.randomInt(0, 4);
     outerLoop: while (numRelatedPostsAdded < 4) {
         const randIndex = crypto.randomInt(0, postsList.length);
         if (i == randIndex) {
