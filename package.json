@@ -23,7 +23,7 @@
     "twgl.js": "^4.24.0"
   },
   "devDependencies": {
-    "@tinacms/cli": "^0.61.1",
+    "@tinacms/cli": "^0.62.1",
     "eslint": "7",
     "eslint-config-next": "12.0.3"
   },
