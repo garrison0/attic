@@ -74,6 +74,8 @@ const apiURL =
     : `https://content.tinajs.io/content/${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}/github/${branch}`;
 
 export const tinaConfig = defineConfig({
+  token: "ccd6c926ad3984800f09fa4233199a644e096309",
+  clientId: "c9cac74e-6437-45d6-aca0-04da38aeaf88",
   apiURL,
   schema,
   cmsCallback: (cms) => {
